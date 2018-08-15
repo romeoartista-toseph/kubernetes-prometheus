@@ -1,0 +1,15 @@
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+apiVersion: v1
+data:
+  prometheus.yml: |-
+    global:
+      scrape_interval: 30s
+      scrape_timeout: 30s
+    scrape_configs:
+    - job_name: 'prometheus'
+      scrape_interval: 5s
+      static_configs:
+        - targets: ['localhost:9090']
